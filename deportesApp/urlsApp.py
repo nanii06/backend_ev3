@@ -1,0 +1,10 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.listar_productos, name='listar_productos'),
+    path('agregar/', views.agregar_producto, name='agregar_producto'),
+    path('modificar/<int:pk>/', views.modificar_producto, name='modificar_producto'),
+    path('eliminar/<int:pk>/', views.eliminar_producto, name='eliminar_producto'),
+    path('categorias/agregar/', views.agregar_categoria, name='agregar_categoria'),
+]
