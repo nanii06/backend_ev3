@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto, Categoria
+from .models import Producto
 
 
 class ProductoForm(forms.ModelForm):
@@ -36,17 +36,3 @@ class ProductoForm(forms.ModelForm):
             raise forms.ValidationError('El nombre no puede estar vacío.')
         return nombre
 
-class CategoriaForm(forms.ModelForm):
-   class Meta:
-        model = Categoria
-        fields = ['nombre']
-        labels = {'nombre': 'Nombre de la categoría'}
-        widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-        }
-
-def clean_nombre(self):
-    nombre = self.cleaned_data['nombre'].strip()
-    if not nombre:
-        raise forms.ValidationError('El nombre no puede estar vacío.')
-    return nombre
